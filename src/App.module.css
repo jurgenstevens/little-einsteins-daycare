@@ -1,0 +1,13 @@
+.app {
+  font-family: system-ui, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+main {
+  padding-top: 80px;
+}
+
+section {
+  padding: 4rem 1.5rem;
+  min-height: 100vh;
+}
