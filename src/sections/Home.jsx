@@ -2,7 +2,7 @@ import styles from "./Home.module.css";
 // Replace hero.png with the actual logo file (src/assets/logo.png) when available
 import logo from "../assets/hero.png";
 
-function Home() {
+function Home({ onNavigate }) {
   return (
     <section id="home" className={styles.hero}>
       <div className={styles.inner}>
@@ -21,8 +21,12 @@ function Home() {
             morbi tristique senectus et netus et malesuada fames.
           </p>
           <div className={styles.ctas}>
-            <a href="#programs" className="btn-primary">Explore Programs</a>
-            <a href="#contact" className="btn-outline">Enroll Now</a>
+            <button onClick={() => onNavigate("programs")} className="btn-primary">
+              Explore Programs
+            </button>
+            <button onClick={() => onNavigate("contact")} className="btn-outline">
+              Enroll Now
+            </button>
           </div>
         </div>
       </div>

@@ -4,16 +4,16 @@ import styles from "./Navbar.module.css";
 import logo from "../../assets/hero.png";
 
 const NAV_LINKS = [
-  { label: "Home",         href: "#home" },
-  { label: "About",        href: "#about" },
-  { label: "Mission",      href: "#mission" },
-  { label: "Programs",     href: "#programs" },
-  { label: "Staff",        href: "#staff" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact",      href: "#contact" },
+  { label: "Home",         id: "home" },
+  { label: "About",        id: "about" },
+  { label: "Mission",      id: "mission" },
+  { label: "Programs",     id: "programs" },
+  { label: "Staff",        id: "staff" },
+  { label: "Testimonials", id: "testimonials" },
+  { label: "Contact",      id: "contact" },
 ];
 
-function Navbar() {
+function Navbar({ activeId, onNavigate }) {
   const [darkMode, setDarkMode]   = useState(false);
   const [menuOpen, setMenuOpen]   = useState(false);
   const [scrolled, setScrolled]   = useState(false);
@@ -29,25 +29,36 @@ function Navbar() {
     setDarkMode((d) => !d);
   };
 
-  const closeMenu = () => setMenuOpen(false);
+  const handleNav = (id) => {
+    onNavigate(id);
+    setMenuOpen(false);
+  };
 
   return (
     <nav
       className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
       aria-label="Main navigation"
     >
-      <a href="#home" className={styles.brand} onClick={closeMenu}>
+      <button
+        className={styles.brand}
+        onClick={() => handleNav("home")}
+        aria-label="Go to Home"
+      >
         <img src={logo} alt="Little Einstein's After-School Center logo" className={styles.logo} />
         <span className={styles.brandName}>Little Einstein's</span>
-      </a>
+      </button>
 
       {/* Desktop links */}
       <ul className={styles.links} role="list">
         {NAV_LINKS.map((link) => (
-          <li key={link.href}>
-            <a href={link.href} className={styles.link}>
+          <li key={link.id}>
+            <button
+              onClick={() => handleNav(link.id)}
+              className={`${styles.link} ${activeId === link.id ? styles.linkActive : ""}`}
+              aria-current={activeId === link.id ? "page" : undefined}
+            >
               {link.label}
-            </a>
+            </button>
           </li>
         ))}
       </ul>
@@ -83,20 +94,23 @@ function Navbar() {
       >
         <ul role="list">
           {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} className={styles.drawerLink} onClick={closeMenu}>
+            <li key={link.id}>
+              <button
+                onClick={() => handleNav(link.id)}
+                className={`${styles.drawerLink} ${activeId === link.id ? styles.drawerLinkActive : ""}`}
+                aria-current={activeId === link.id ? "page" : undefined}
+              >
                 {link.label}
-              </a>
+              </button>
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Overlay */}
       {menuOpen && (
         <div
           className={styles.overlay}
-          onClick={closeMenu}
+          onClick={() => setMenuOpen(false)}
           aria-hidden="true"
         />
       )}
