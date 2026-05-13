@@ -10,43 +10,16 @@
   padding-top: 68px;
 }
 
-/* Animate section transitions */
+/* Fade-in on route change */
 .sectionWrap {
-  animation: fadeIn 0.35s ease;
+  animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Dot navigation ──────────────────────────── */
-.dotNav {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--border);
-  border: none;
-  cursor: pointer;
-  transition: background var(--transition), transform var(--transition);
-  padding: 0;
-}
-
-.dot:hover {
-  background: var(--primary);
-  transform: scale(1.2);
-}
-
-.dotActive {
-  background: var(--primary);
-  transform: scale(1.25);
+@media (prefers-reduced-motion: reduce) {
+  .sectionWrap { animation: none; }
 }

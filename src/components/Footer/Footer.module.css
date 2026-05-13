@@ -1,11 +1,7 @@
 .footer {
-  background: var(--text);
-  color: var(--bg);
+  background: #1C0A0A;   /* always dark — keeps light text legible in both modes */
+  color: #F6F0E4;
   padding: 4rem 2rem 1.5rem;
-}
-
-body.dark .footer {
-  background: #0A0505;
 }
 
 .top {
@@ -64,12 +60,6 @@ body.dark .footer {
   color: rgba(246, 240, 228, 0.8);
   text-decoration: none;
   transition: color var(--transition);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font-family: var(--font-body);
-  text-align: left;
 }
 
 .footerLink:hover {

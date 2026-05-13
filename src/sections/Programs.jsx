@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./Programs.module.css";
 
 const PROGRAMS = [
@@ -39,7 +40,8 @@ const PROGRAMS = [
   },
 ];
 
-function Programs({ onNavigate }) {
+function Programs() {
+  const navigate = useNavigate();
   return (
     <section id="programs" className={styles.programs}>
       <div className={styles.inner}>
@@ -64,7 +66,7 @@ function Programs({ onNavigate }) {
         </div>
 
         <div className={styles.cta}>
-          <button onClick={() => onNavigate("contact")} className="btn-primary">
+          <button onClick={() => navigate("/contact")} className="btn-primary">
             Ask About Enrollment
           </button>
         </div>
