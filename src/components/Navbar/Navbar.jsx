@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
+import { NavLink }             from "react-router-dom";
 import styles from "./Navbar.module.css";
 // Replace hero.png with the actual logo file (src/assets/logo.png) when available
 import logo from "../../assets/hero.png";
 
 const NAV_LINKS = [
-  { label: "Home",         id: "home" },
-  { label: "About",        id: "about" },
-  { label: "Mission",      id: "mission" },
-  { label: "Programs",     id: "programs" },
-  { label: "Staff",        id: "staff" },
-  { label: "Testimonials", id: "testimonials" },
-  { label: "Contact",      id: "contact" },
+  { label: "Home",         to: "/" },
+  { label: "About",        to: "/about" },
+  { label: "Mission",      to: "/mission" },
+  { label: "Programs",     to: "/programs" },
+  { label: "Testimonials", to: "/testimonials" },
+  { label: "Contact",      to: "/contact" },
 ];
 
-function Navbar({ activeId, onNavigate }) {
-  const [darkMode, setDarkMode]   = useState(false);
-  const [menuOpen, setMenuOpen]   = useState(false);
-  const [scrolled, setScrolled]   = useState(false);
+function Navbar() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -29,36 +29,36 @@ function Navbar({ activeId, onNavigate }) {
     setDarkMode((d) => !d);
   };
 
-  const handleNav = (id) => {
-    onNavigate(id);
-    setMenuOpen(false);
-  };
+  const closeMenu = () => setMenuOpen(false);
+
+  /* NavLink className helper — adds .linkActive when route matches */
+  const linkClass = ({ isActive }) =>
+    `${styles.link} ${isActive ? styles.linkActive : ""}`;
+
+  const drawerLinkClass = ({ isActive }) =>
+    `${styles.drawerLink} ${isActive ? styles.drawerLinkActive : ""}`;
 
   return (
     <nav
       className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
       aria-label="Main navigation"
     >
-      <button
-        className={styles.brand}
-        onClick={() => handleNav("home")}
-        aria-label="Go to Home"
-      >
+      <NavLink to="/" className={styles.brand} onClick={closeMenu}>
         <img src={logo} alt="Little Einstein's After-School Center logo" className={styles.logo} />
         <span className={styles.brandName}>Little Einstein's</span>
-      </button>
+      </NavLink>
 
       {/* Desktop links */}
       <ul className={styles.links} role="list">
         {NAV_LINKS.map((link) => (
-          <li key={link.id}>
-            <button
-              onClick={() => handleNav(link.id)}
-              className={`${styles.link} ${activeId === link.id ? styles.linkActive : ""}`}
-              aria-current={activeId === link.id ? "page" : undefined}
+          <li key={link.to}>
+            <NavLink
+              to={link.to}
+              end={link.to === "/"}
+              className={linkClass}
             >
               {link.label}
-            </button>
+            </NavLink>
           </li>
         ))}
       </ul>
@@ -94,14 +94,15 @@ function Navbar({ activeId, onNavigate }) {
       >
         <ul role="list">
           {NAV_LINKS.map((link) => (
-            <li key={link.id}>
-              <button
-                onClick={() => handleNav(link.id)}
-                className={`${styles.drawerLink} ${activeId === link.id ? styles.drawerLinkActive : ""}`}
-                aria-current={activeId === link.id ? "page" : undefined}
+            <li key={link.to}>
+              <NavLink
+                to={link.to}
+                end={link.to === "/"}
+                className={drawerLinkClass}
+                onClick={closeMenu}
               >
                 {link.label}
-              </button>
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -110,7 +111,7 @@ function Navbar({ activeId, onNavigate }) {
       {menuOpen && (
         <div
           className={styles.overlay}
-          onClick={() => setMenuOpen(false)}
+          onClick={closeMenu}
           aria-hidden="true"
         />
       )}

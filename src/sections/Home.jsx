@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./Home.module.css";
 // Replace hero.png with the actual logo file (src/assets/logo.png) when available
 import logo from "../assets/hero.png";
 
-function Home({ onNavigate }) {
+function Home() {
+  const navigate = useNavigate();
+
   return (
     <section id="home" className={styles.hero}>
       <div className={styles.inner}>
@@ -21,10 +24,10 @@ function Home({ onNavigate }) {
             morbi tristique senectus et netus et malesuada fames.
           </p>
           <div className={styles.ctas}>
-            <button onClick={() => onNavigate("programs")} className="btn-primary">
+            <button onClick={() => navigate("/programs")} className="btn-primary">
               Explore Programs
             </button>
-            <button onClick={() => onNavigate("contact")} className="btn-outline">
+            <button onClick={() => navigate("/contact")} className="btn-outline">
               Enroll Now
             </button>
           </div>

@@ -18,19 +18,13 @@
   justify-content: center;
 }
 
-.imagePlaceholder {
+.aboutImg {
   width: 100%;
   max-width: 440px;
   aspect-ratio: 4/3;
-  background: var(--card-bg);
-  border: 2px dashed var(--border);
+  object-fit: cover;
   border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-weight: 600;
+  box-shadow: var(--shadow-md);
 }
 
 /* ── Text side ───────────────────────────────── */

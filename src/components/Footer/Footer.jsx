@@ -1,18 +1,18 @@
+import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 // Replace hero.png with the actual logo file (src/assets/logo.png) when available
 import logo from "../../assets/hero.png";
 
 const NAV_LINKS = [
-  { label: "Home",         id: "home" },
-  { label: "About",        id: "about" },
-  { label: "Mission",      id: "mission" },
-  { label: "Programs",     id: "programs" },
-  { label: "Staff",        id: "staff" },
-  { label: "Testimonials", id: "testimonials" },
-  { label: "Contact",      id: "contact" },
+  { label: "Home",         to: "/" },
+  { label: "About",        to: "/about" },
+  { label: "Mission",      to: "/mission" },
+  { label: "Programs",     to: "/programs" },
+  { label: "Testimonials", to: "/testimonials" },
+  { label: "Contact",      to: "/contact" },
 ];
 
-function Footer({ onNavigate }) {
+function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>
@@ -29,13 +29,8 @@ function Footer({ onNavigate }) {
           <h4 className={styles.colTitle}>Quick Links</h4>
           <ul className={styles.linkList}>
             {NAV_LINKS.map((l) => (
-              <li key={l.id}>
-                <button
-                  onClick={() => onNavigate(l.id)}
-                  className={styles.footerLink}
-                >
-                  {l.label}
-                </button>
+              <li key={l.to}>
+                <Link to={l.to} className={styles.footerLink}>{l.label}</Link>
               </li>
             ))}
           </ul>

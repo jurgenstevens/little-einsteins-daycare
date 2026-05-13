@@ -1,0 +1,28 @@
+.dotNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background var(--transition), transform var(--transition);
+}
+
+.dot:hover {
+  background: var(--primary);
+  transform: scale(1.2);
+}
+
+.dotActive {
+  background: var(--primary);
+  transform: scale(1.25);
+}
