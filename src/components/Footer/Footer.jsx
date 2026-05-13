@@ -4,12 +4,12 @@ import styles from "./Footer.module.css";
 import logo from "../../assets/hero.png";
 
 const NAV_LINKS = [
-  { label: "Home",         to: "/" },
-  { label: "About",        to: "/about" },
-  { label: "Mission",      to: "/mission" },
-  { label: "Programs",     to: "/programs" },
-  { label: "Testimonials", to: "/testimonials" },
-  { label: "Contact",      to: "/contact" },
+  { label: "Home",         href: "#home" },
+  { label: "About",        href: "#about" },
+  { label: "Mission",      href: "#mission" },
+  { label: "Programs",     href: "#programs" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "Contact",      href: "#contact" },
 ];
 
 function Footer() {

@@ -1,8 +1,7 @@
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Navbar      from "./components/Navbar/Navbar";
 import Footer      from "./components/Footer/Footer";
-import DotNav      from "./components/DotNav/DotNav";
 import styles      from "./App.module.css";
 
 import Home         from "./sections/Home";
@@ -12,21 +11,16 @@ import Programs     from "./sections/Programs";
 import Testimonials from "./sections/Testimonials";
 import Contact      from "./sections/Contact";
 
-/* Wraps the active section so we can key on route change for the fade-in */
-function AnimatedRoutes() {
-  const location = useLocation();
+function ScrollPage() {
   return (
-    <div className={styles.sectionWrap} key={location.pathname}>
-      <Routes location={location}>
-        <Route path="/"            element={<Home />} />
-        <Route path="/about"       element={<About />} />
-        <Route path="/mission"     element={<Mission />} />
-        <Route path="/programs"    element={<Programs />} />
-        <Route path="/testimonials" element={<Testimonials />} />
-        <Route path="/contact"     element={<Contact />} />
-        <Route path="*"            element={<Navigate to="/" replace />} />
-      </Routes>
-    </div>
+    <>
+      <Home />
+      <About />
+      <Mission />
+      <Programs />
+      <Testimonials />
+      <Contact />
+    </>
   );
 }
 
@@ -36,9 +30,11 @@ function App() {
       <div className={styles.app}>
         <Navbar />
         <main className={styles.main}>
-          <AnimatedRoutes />
+          <Routes>
+            <Route path="/" element={<ScrollPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
         </main>
-        <DotNav />
         <Footer />
       </div>
     </BrowserRouter>
