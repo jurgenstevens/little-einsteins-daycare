@@ -24,6 +24,10 @@
   gap: 0.6rem;
   text-decoration: none;
   flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .logo {
@@ -58,12 +62,20 @@
   padding: 0.4rem 0.65rem;
   border-radius: var(--radius-sm);
   transition: background 0.2s ease, color 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .link:hover {
   background: var(--primary-light);
   color: var(--primary);
   text-decoration: none;
+}
+
+.linkActive {
+  background: var(--primary-light);
+  color: var(--primary);
 }
 
 /* ── Controls (theme toggle + hamburger) ────────────────────── */
@@ -147,6 +159,8 @@
 
 .drawerLink {
   display: block;
+  width: 100%;
+  text-align: left;
   font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 600;
@@ -155,12 +169,20 @@
   padding: 0.75rem 1rem;
   border-radius: var(--radius-sm);
   transition: background 0.2s ease, color 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .drawerLink:hover {
   background: var(--primary-light);
   color: var(--primary);
   text-decoration: none;
+}
+
+.drawerLinkActive {
+  background: var(--primary-light);
+  color: var(--primary);
 }
 
 /* ── Overlay ────────────────────────────────────────────────── */

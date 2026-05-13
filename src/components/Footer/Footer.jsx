@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { label: "Contact",      href: "#contact" },
 ];
 
-function Footer() {
+function Footer({ onNavigate }) {
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>
@@ -28,8 +28,13 @@ function Footer() {
           <h4 className={styles.colTitle}>Quick Links</h4>
           <ul className={styles.linkList}>
             {NAV_LINKS.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} className={styles.footerLink}>{l.label}</a>
+              <li key={l.id}>
+                <button
+                  onClick={() => onNavigate(l.id)}
+                  className={styles.footerLink}
+                >
+                  {l.label}
+                </button>
               </li>
             ))}
           </ul>

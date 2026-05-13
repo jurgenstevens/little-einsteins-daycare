@@ -39,7 +39,7 @@ const PROGRAMS = [
   },
 ];
 
-function Programs() {
+function Programs({ onNavigate }) {
   return (
     <section id="programs" className={styles.programs}>
       <div className={styles.inner}>
@@ -64,7 +64,9 @@ function Programs() {
         </div>
 
         <div className={styles.cta}>
-          <a href="#contact" className="btn-primary">Ask About Enrollment</a>
+          <button onClick={() => onNavigate("contact")} className="btn-primary">
+            Ask About Enrollment
+          </button>
         </div>
       </div>
     </section>
