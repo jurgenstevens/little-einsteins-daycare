@@ -1,22 +1,22 @@
 import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
-// Replace hero.png with the actual logo file (src/assets/logo.png) when available
+// Replace hero.png with your actual logo file (src/assets/logo.png) when ready
 import logo from "../../assets/hero.png";
 
 const NAV_LINKS = [
-  { label: "Home",         href: "#home" },
-  { label: "About",        href: "#about" },
-  { label: "Mission",      href: "#mission" },
-  { label: "Programs",     href: "#programs" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact",      href: "#contact" },
+  { label: "Home",         to: "/" },
+  { label: "About",        to: "/about" },
+  { label: "Mission",      to: "/mission" },
+  { label: "Programs",     to: "/programs" },
+  { label: "Testimonials", to: "/testimonials" },
+  { label: "Contact",      to: "/contact" },
 ];
 
 function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>
-        {/* Brand */}
+
         <div className={styles.brand}>
           <img src={logo} alt="Little Einstein's logo" className={styles.logo} />
           <p className={styles.tagline}>
@@ -24,7 +24,6 @@ function Footer() {
           </p>
         </div>
 
-        {/* Quick links */}
         <nav aria-label="Footer navigation">
           <h4 className={styles.colTitle}>Quick Links</h4>
           <ul className={styles.linkList}>
@@ -36,7 +35,6 @@ function Footer() {
           </ul>
         </nav>
 
-        {/* Contact */}
         <div className={styles.contactCol}>
           <h4 className={styles.colTitle}>Contact</h4>
           <address className={styles.address}>
@@ -47,6 +45,7 @@ function Footer() {
             <p>Mon – Fri: 3:00 PM – 7:00 PM</p>
           </address>
         </div>
+
       </div>
 
       <div className={styles.bottom}>
