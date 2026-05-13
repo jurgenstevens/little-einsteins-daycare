@@ -12,9 +12,12 @@ function About() {
     <section id="about" className={styles.about}>
       <div className={styles.inner}>
         <div className={styles.imageSide}>
-          <div className={styles.imagePlaceholder} aria-label="About us image coming soon">
-            <span>📸 Photo Coming Soon</span>
-          </div>
+          {/* ── Replace the src below with your own classroom/team photo ── */}
+          <img
+            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop"
+            alt="Children learning together in a bright classroom"
+            className={styles.aboutImg}
+          />
         </div>
 
         <div className={styles.textSide}>

@@ -3,13 +3,12 @@ import styles from "./Footer.module.css";
 import logo from "../../assets/hero.png";
 
 const NAV_LINKS = [
-  { label: "Home",         id: "home" },
-  { label: "About",        id: "about" },
-  { label: "Mission",      id: "mission" },
-  { label: "Programs",     id: "programs" },
-  { label: "Staff",        id: "staff" },
-  { label: "Testimonials", id: "testimonials" },
-  { label: "Contact",      id: "contact" },
+  { label: "Home",         href: "#home" },
+  { label: "About",        href: "#about" },
+  { label: "Mission",      href: "#mission" },
+  { label: "Programs",     href: "#programs" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "Contact",      href: "#contact" },
 ];
 
 function Footer({ onNavigate }) {
