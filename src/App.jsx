@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useSwipeNavigation } from "./hooks/useSwipeNavigation";
 
 import Navbar       from "./components/Navbar/Navbar";
 import Footer       from "./components/Footer/Footer";
@@ -14,6 +15,8 @@ import Contact       from "./sections/Contact";
 
 function AnimatedRoutes() {
   const location = useLocation();
+  useSwipeNavigation(); // 👈 attach touch listeners here
+
   return (
     <div className={styles.sectionWrap} key={location.pathname}>
       <Routes location={location}>
