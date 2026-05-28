@@ -69,7 +69,7 @@ function Contact() {
               <span className={styles.contactIcon} aria-hidden="true">🕐</span>
               <div>
                 <strong>Hours</strong>
-                <span>Mon – Fri: 3:00 PM – 7:00 PM</span>
+                <span>Mon – Fri: 2:00 PM – 8:00 PM</span>
               </div>
             </li>
           </ul>
