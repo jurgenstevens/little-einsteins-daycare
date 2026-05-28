@@ -62,7 +62,7 @@ function Contact() {
               <span className={styles.contactIcon} aria-hidden="true">✉️</span>
               <div>
                 <strong>Email</strong>
-                <a href="mailto:info@littleeinsteins.com">info@littleeinsteins.com</a>
+                <a href="mailto:info@littleeinsteins.com">littleeinsteinsafterschool@gmail.com</a>
               </div>
             </li>
             <li>
