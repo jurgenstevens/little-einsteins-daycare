@@ -10,16 +10,32 @@
   padding-top: 68px;
 }
 
-/* Fade-in on route change */
-.sectionWrap {
-  animation: fadeIn 0.3s ease;
+/* ── Directional slide animations ────────────────────────────── */
+
+/* Default (nav link clicks) — slide in from right */
+.forward {
+  animation: slideFromRight 0.32s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Swipe right — slide in from left */
+.backward {
+  animation: slideFromLeft 0.32s ease;
 }
 
+@keyframes slideFromRight {
+  from { transform: translateX(40px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slideFromLeft {
+  from { transform: translateX(-40px); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+/* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  .sectionWrap { animation: none; }
+  .forward,
+  .backward {
+    animation: none;
+  }
 }

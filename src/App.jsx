@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 import { useSwipeNavigation } from "./hooks/useSwipeNavigation";
 
 import Navbar       from "./components/Navbar/Navbar";
@@ -14,11 +15,16 @@ import Testimonials  from "./sections/Testimonials";
 import Contact       from "./sections/Contact";
 
 function AnimatedRoutes() {
-  const location = useLocation();
-  useSwipeNavigation(); // 👈 attach touch listeners here
+  const location               = useLocation();
+  const [direction, setDirection] = useState("forward");
+
+  useSwipeNavigation(setDirection);
 
   return (
-    <div className={styles.sectionWrap} key={location.pathname}>
+    <div
+      className={`${styles.sectionWrap} ${styles[direction]}`}
+      key={location.pathname}
+    >
       <Routes location={location}>
         <Route path="/"             element={<Home />} />
         <Route path="/about"        element={<About />} />
