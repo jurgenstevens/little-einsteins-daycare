@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
-import styles from "./Contact.module.css";
+import emailjs    from "@emailjs/browser";
+import ReCAPTCHA  from "react-google-recaptcha";
+import styles     from "./Contact.module.css";
 
-const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || "YOUR_SERVICE_ID";
-const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
-const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || "YOUR_PUBLIC_KEY";
+const SERVICE_ID    = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID   = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY    = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const RECAPTCHA_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 const REASONS = [
   "General Inquiry",
@@ -16,17 +18,35 @@ const REASONS = [
 ];
 
 function Contact() {
-  const formRef  = useRef(null);
-  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const formRef      = useRef(null);
+  const recaptchaRef = useRef(null);
+  const [status,       setStatus]       = useState("idle"); // idle | sending | success | error
+  const [captchaToken, setCaptchaToken] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!captchaToken) return;
+
     setStatus("sending");
+
+    // emailjs.send() is FREE — emailjs.sendForm() is PRO only
+    const data = new FormData(formRef.current);
+    const templateParams = {
+      from_name:  data.get("from_name"),
+      from_email: data.get("from_email"),
+      phone:      data.get("phone") || "Not provided",
+      reason:     data.get("reason"),
+      message:    data.get("message"),
+    };
+
     try {
-      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
       setStatus("success");
       formRef.current.reset();
-    } catch {
+      setCaptchaToken(null);
+      recaptchaRef.current?.reset();
+    } catch (err) {
+      console.error("EmailJS error:", err);
       setStatus("error");
     }
   };
@@ -34,13 +54,14 @@ function Contact() {
   return (
     <section id="contact" className={styles.contact}>
       <div className={styles.inner}>
+
         {/* ── Info column ── */}
         <div className={styles.info}>
           <span className="section-label">Contact Us</span>
           <h2>Get in Touch</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula
-            sapien a lectus venenatis, at fringilla purus laoreet.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+            vehicula sapien a lectus venenatis, at fringilla purus laoreet.
           </p>
 
           <ul className={styles.contactList}>
@@ -48,21 +69,21 @@ function Contact() {
               <span className={styles.contactIcon} aria-hidden="true">📍</span>
               <div>
                 <strong>Address</strong>
-                <span>123 Learning Lane, Chicago, IL 60601</span>
+                <span>1125 W 31st St, Chicago, IL 60608</span>
               </div>
             </li>
             <li>
               <span className={styles.contactIcon} aria-hidden="true">📞</span>
               <div>
                 <strong>Phone</strong>
-                <a href="tel:+11234567890">(123) 456-7890</a>
+                <a href="tel:+17734756004">(773) 475-6004</a>
               </div>
             </li>
             <li>
               <span className={styles.contactIcon} aria-hidden="true">✉️</span>
               <div>
                 <strong>Email</strong>
-                <a href="mailto:info@littleeinsteins.com">littleeinsteinsafterschool@gmail.com</a>
+                <a href="mailto:littleeinsteinsafterschool@gmail.com">littleeinsteinsafterschool@gmail.com</a>
               </div>
             </li>
             <li>
@@ -87,7 +108,9 @@ function Contact() {
 
             <div className={styles.row}>
               <div className={styles.field}>
-                <label htmlFor="from_name">Full Name <span aria-hidden="true">*</span></label>
+                <label htmlFor="from_name">
+                  Full Name <span aria-hidden="true">*</span>
+                </label>
                 <input
                   id="from_name"
                   name="from_name"
@@ -98,7 +121,9 @@ function Contact() {
                 />
               </div>
               <div className={styles.field}>
-                <label htmlFor="from_email">Email <span aria-hidden="true">*</span></label>
+                <label htmlFor="from_email">
+                  Email <span aria-hidden="true">*</span>
+                </label>
                 <input
                   id="from_email"
                   name="from_email"
@@ -122,7 +147,9 @@ function Contact() {
                 />
               </div>
               <div className={styles.field}>
-                <label htmlFor="reason">Reason for Contact <span aria-hidden="true">*</span></label>
+                <label htmlFor="reason">
+                  Reason for Contact <span aria-hidden="true">*</span>
+                </label>
                 <select id="reason" name="reason" required>
                   <option value="">Select a reason…</option>
                   {REASONS.map((r) => (
@@ -133,7 +160,9 @@ function Contact() {
             </div>
 
             <div className={styles.field}>
-              <label htmlFor="message">Message <span aria-hidden="true">*</span></label>
+              <label htmlFor="message">
+                Message <span aria-hidden="true">*</span>
+              </label>
               <textarea
                 id="message"
                 name="message"
@@ -143,7 +172,19 @@ function Contact() {
               />
             </div>
 
-            <button type="submit" className="btn-primary" disabled={status === "sending"}>
+            {/* reCAPTCHA — must be checked before submit is enabled */}
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={RECAPTCHA_KEY}
+              onChange={(token) => setCaptchaToken(token)}
+              onExpired={() => setCaptchaToken(null)}
+            />
+
+            <button
+              type="submit"
+              className="btn-primary"
+              disabled={status === "sending" || !captchaToken}
+            >
               {status === "sending" ? "Sending…" : "Send Message"}
             </button>
 
@@ -159,6 +200,7 @@ function Contact() {
             )}
           </form>
         </div>
+
       </div>
     </section>
   );

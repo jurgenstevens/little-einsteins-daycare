@@ -38,11 +38,11 @@ function Footer() {
         <div className={styles.contactCol}>
           <h4 className={styles.colTitle}>Contact</h4>
           <address className={styles.address}>
-            <p>123 Learning Lane</p>
-            <p>Chicago, IL 60601</p>
-            <p><a href="tel:+11234567890">(123) 456-7890</a></p>
-            <p><a href="mailto:info@littleeinsteins.com">info@littleeinsteins.com</a></p>
-            <p>Mon – Fri: 3:00 PM – 7:00 PM</p>
+            <p>1125 W 31st Street</p>
+            <p>Chicago, IL 60608</p>
+            <p><a href="tel:+17734756004">(773) 475-6004</a></p>
+            <p><a href="mailto:littleeinsteinsafterschool@gmail.com">littleeinsteinsafterschool@gmail.com</a></p>
+            <p>Mon – Fri: 2:00 PM – 8:00 PM</p>
           </address>
         </div>
 
