@@ -29,7 +29,6 @@ function Contact() {
 
     setStatus("sending");
 
-    // emailjs.send() is FREE — emailjs.sendForm() is PRO only
     const data = new FormData(formRef.current);
     const templateParams = {
       from_name:  data.get("from_name"),
@@ -40,7 +39,12 @@ function Contact() {
     };
 
     try {
-      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        { publicKey: PUBLIC_KEY }
+      );
       setStatus("success");
       formRef.current.reset();
       setCaptchaToken(null);
