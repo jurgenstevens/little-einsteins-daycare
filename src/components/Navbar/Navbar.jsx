@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink }             from "react-router-dom";
 import styles from "./Navbar.module.css";
 // Replace hero.png with the actual logo file (src/assets/logo.png) when available
-import logo from "../../assets/hero.png";
+import logo from "../../assets/logo.png";
 
 const NAV_LINKS = [
   { label: "Home",         to: "/" },
