@@ -19,9 +19,7 @@ function Home() {
             Where Young Minds <span className={styles.accent}>Thrive</span> Every Day
           </h1>
           <p className={styles.sub}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula
-            sapien a lectus venenatis, at fringilla purus laoreet. Pellentesque habitant
-            morbi tristique senectus et netus et malesuada fames.
+            Little Einstein's After-School Center offers enriching programs for children ages 5–12, Monday through Friday from 2:00 PM to 8:00 PM in Chicago's Bridgeport neighborhood.
           </p>
           <div className={styles.ctas}>
             <button onClick={() => navigate("/programs")} className="btn-primary">
