@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./Home.module.css";
 // Replace hero.png with the actual logo file (src/assets/logo.png) when available
-import logo from "../assets/hero.png";
+import logo from "../assets/logo.png";
 
 function Home() {
   const navigate = useNavigate();

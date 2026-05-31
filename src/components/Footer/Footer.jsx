@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
-// Replace hero.png with your actual logo file (src/assets/logo.png) when ready
-import logo from "../../assets/hero.png";
+import logo from "../../assets/logo.png";
 
 const NAV_LINKS = [
   { label: "Home",         to: "/" },
