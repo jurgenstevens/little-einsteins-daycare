@@ -43,10 +43,13 @@ function Navbar() {
       className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
       aria-label="Main navigation"
     >
-      <NavLink to="/" className={styles.brand} onClick={closeMenu}>
-        <img src={logo} alt="Little Einstein's After-School Center logo" className={styles.logo} />
-        <span className={styles.brandName}>Little Einstein's</span>
-      </NavLink>
+<NavLink to="/" className={styles.brand} onClick={closeMenu}>
+  <img src={logo} alt="Little Einstein's After-School Center logo" className={styles.logo} />
+  <div className={styles.brandText}>
+    <span className={styles.brandName}>Little Einstein's</span>
+    <span className={styles.brandSub}>After School Care</span>
+  </div>
+</NavLink>
 
       {/* Desktop links */}
       <ul className={styles.links} role="list">
