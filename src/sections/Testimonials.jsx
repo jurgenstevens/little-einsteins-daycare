@@ -2,21 +2,15 @@ import styles from "./Testimonials.module.css";
 
 const TESTIMONIALS = [
   {
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula sapien a lectus venenatis, at fringilla purus laoreet. Pellentesque habitant morbi tristique.",
-    name: "Parent One",
-    detail: "Parent of a 3rd Grader",
+    quote: "My child has become more confident and independent, and I appreciate the patience and support the staff provides every day.",
     rating: 5,
   },
   {
-    quote: "Nunc euismod nisl vel ultricies lacinia. Sed euismod nisl vel ultricies lacinia, nisl nisl aliquam nisl. Vestibulum ante ipsum primis in faucibus orci luctus.",
-    name: "Parent Two",
-    detail: "Parent of a 1st & 4th Grader",
+    quote: "The communication is excellent, the staff is dependable, and I have complete confidence that my child is in great hands every day.",
     rating: 5,
   },
   {
-    quote: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.",
-    name: "Parent Three",
-    detail: "Parent of a 2nd Grader",
+    quote: "From day one, we felt welcomed into a caring, family-oriented environment where our child feels safe and supported.",
     rating: 5,
   },
 ];
@@ -37,24 +31,17 @@ function Testimonials() {
           <span className="section-label">Testimonials</span>
           <h2>What Parents Are Saying</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula
-            sapien a lectus venenatis, at fringilla purus laoreet.
+            Hear directly from the families who trust us with their children every day.
           </p>
         </div>
 
         <div className={styles.grid}>
-          {TESTIMONIALS.map((t) => (
-            <blockquote key={t.name} className={styles.card}>
+          {TESTIMONIALS.map((t, i) => (
+            <blockquote key={i} className={styles.card}>
               <Stars count={t.rating} />
               <p className={styles.quote}>"{t.quote}"</p>
               <footer className={styles.author}>
-                <div className={styles.authorAvatar} aria-hidden="true">
-                  {t.name[0]}
-                </div>
-                <div>
-                  <cite className={styles.name}>{t.name}</cite>
-                  <span className={styles.detail}>{t.detail}</span>
-                </div>
+                <span className={styles.detail}>Little Einstein's Parent</span>
               </footer>
             </blockquote>
           ))}
