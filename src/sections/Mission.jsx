@@ -4,17 +4,17 @@ const PILLARS = [
   {
     icon: "🎯",
     title: "Academic Excellence",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula sapien a lectus venenatis fringilla.",
+    body: "We provide homework assistance and focused instruction in mathematics, literacy, reading comprehension, science, and critical thinking to help every student excel in the classroom and beyond.",
   },
   {
     icon: "🤝",
-    title: "Character & Values",
-    body: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas integer.",
+    title: "Community & Belonging",
+    body: "Proudly serving families from schools across the Chicagoland area, we create a warm, family-oriented environment where children form meaningful friendships and feel truly valued.",
   },
   {
     icon: "🌱",
-    title: "Holistic Growth",
-    body: "Nunc euismod nisl vel ultricies lacinia. Sed euismod nisl vel ultricies lacinia nisl aliquam sit amet.",
+    title: "Confidence & Growth",
+    body: "We give every child the encouragement and personalized support they need to develop confidence, unlock their potential, and build skills that last a lifetime.",
   },
 ];
 
@@ -26,9 +26,12 @@ function Mission() {
           <span className="section-label">Our Mission</span>
           <h2>Inspiring the Next Generation of Thinkers</h2>
           <p className={styles.lead}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula
-            sapien a lectus venenatis, at fringilla purus laoreet. Pellentesque habitant
-            morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+            Our mission is to provide children ages 5–12 with a safe, nurturing, and
+            enriching after-school environment where they can learn, grow, and thrive.
+            Proudly serving families from schools across the Chicagoland area, we are
+            committed to supporting academic success through homework assistance while
+            fostering confidence, creativity, and meaningful friendships through
+            engaging activities.
           </p>
         </div>
 
@@ -44,10 +47,11 @@ function Mission() {
 
         <blockquote className={styles.quote}>
           <p>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua."
+            "We strive to create the perfect balance between education and fun, giving
+            every child a place where they feel encouraged, valued, and inspired to
+            reach their full potential."
           </p>
-          <cite>— Founder, Little Einstein's After-School Center</cite>
+          <cite>— Little Einstein's After-School Center</cite>
         </blockquote>
       </div>
     </section>
