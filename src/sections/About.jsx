@@ -3,8 +3,6 @@ import styles from "./About.module.css";
 const STATS = [
   { value: "10+", label: "Years of Excellence" },
   { value: "200+", label: "Students Enrolled" },
-  { value: "15+", label: "Dedicated Staff" },
-  { value: "98%", label: "Parent Satisfaction" },
 ];
 
 function About() {
@@ -12,7 +10,6 @@ function About() {
     <section id="about" className={styles.about}>
       <div className={styles.inner}>
         <div className={styles.imageSide}>
-          {/* ── Replace the src below with your own classroom/team photo ── */}
           <img
             src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop"
             alt="Children learning together in a bright classroom"
@@ -24,14 +21,15 @@ function About() {
           <span className="section-label">About Us</span>
           <h2>A Safe Place to Learn, Grow &amp; Belong</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula
-            sapien a lectus venenatis, at fringilla purus laoreet. Pellentesque habitant
-            morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+            At our center, we provide a safe, supportive, and engaging environment where
+            children can thrive after the school day ends. We believe in creating the
+            perfect balance between learning and fun by helping students complete their
+            homework while also encouraging creativity, friendship, and personal growth
+            through enriching activities.
           </p>
           <p>
-            Nunc euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, nec
-            aliquam nisl nisl sit amet nisl. Sed euismod, nisl vel ultricies lacinia,
-            nisl nisl aliquam nisl, nec aliquam nisl.
+            Our dedicated team is committed to giving every child a place where they feel
+            valued, supported, and excited to learn and grow each day.
           </p>
 
           <div className={styles.stats}>
