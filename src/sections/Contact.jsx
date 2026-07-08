@@ -64,8 +64,7 @@ function Contact() {
           <span className="section-label">Contact Us</span>
           <h2>Get in Touch</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-            vehicula sapien a lectus venenatis, at fringilla purus laoreet.
+            We'd love to hear from you! Whether you have questions about our programs or are ready to enroll your child, we're just a message away.
           </p>
 
           <ul className={styles.contactList}>
